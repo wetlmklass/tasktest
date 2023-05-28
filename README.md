@@ -1,3 +1,5 @@
+0. Установить вендоры: composer install
+
 1. Создание окружения для приложения:
   команда создает и запускает стэк из docker-compose.yml: ./vendor/bin/sail up
 
@@ -14,3 +16,9 @@
   Метод запроса баланса: curl http://localhost/api/balance/2
   Метод запроса статистики c сортировкой по полю date (по убыванию): curl -X POST http://localhost/api/transactions -H 'Content-Type: application/json' -d '{"from": "1995-03-15 00:00:00", "to": "2000-08-07 00:00:00"}'
   Метод изменения баланса: curl -X POST http://localhost/api/balance -H 'Content-Type: application/json' -d '{"id": "2", "sum": "100"}'
+
+5. Автотесты
+Проверяем работоспособность маршрутов микросервиса.
+Тесты расположены в папке tests/Freature
+Из под контейнера tasktest-laravel.test-1 выполнить команду:
+php artisan test --filter=ExampleTest
